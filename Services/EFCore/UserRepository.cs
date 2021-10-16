@@ -6,6 +6,10 @@ namespace Repository.EFCore
 {
     public class UserRepository : EfCoreRepository<User, MainContext>
     {
-        public UserRepository(MainContext context, IUriService uriService, ILogger<User> log) : base(context, uriService, log) { }
+        public UserRepository(MainContext context, 
+                              IUriService uriService, 
+                              ILogger<User> log) : 
+                              base(context, uriService, log) { }
+
     }
 }

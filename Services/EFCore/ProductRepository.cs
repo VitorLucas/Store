@@ -7,7 +7,9 @@ namespace Repository.EFCore
 {
     public class ProductRepository : EfCoreRepository<Product, MainContext>
     {
-        public ProductRepository(MainContext context, IUriService uriService, ILogger<Product> log) : base(context, uriService, log)
+        public ProductRepository(MainContext context, 
+                                 IUriService uriService, 
+                                 ILogger<Product> log) : base(context, uriService, log)
         {
         }
     }

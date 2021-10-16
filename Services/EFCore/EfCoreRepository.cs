@@ -20,7 +20,9 @@ namespace Repository.EFCore
         private readonly TContext context;
         private readonly IUriService uriService;
         private ILogger log;
-        public EfCoreRepository(TContext context, IUriService uriService, ILogger<TEntity> log)
+        public EfCoreRepository(TContext context, 
+                                IUriService uriService, 
+                                ILogger<TEntity> log)
         {
             this.context = context;
             this.uriService = uriService;
@@ -76,7 +78,8 @@ namespace Repository.EFCore
             }    
         }
 
-        public async Task<PagedResponse<List<TEntity>>> GetAll(PaginationFilter filter, string route)
+        public async Task<PagedResponse<List<TEntity>>> GetAll(PaginationFilter filter, 
+                                                                string route)
         {
             var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
             var pagedData = await context.Set<TEntity>()
@@ -85,7 +88,11 @@ namespace Repository.EFCore
                 .ToListAsync();
 
             var totalRecords = await context.Set<TEntity>().CountAsync();
-            var pagedReponse = PaginationHelper.CreatePagedReponse<TEntity>(pagedData, validFilter, totalRecords, uriService, route);
+            var pagedReponse = PaginationHelper.CreatePagedReponse<TEntity>(pagedData, 
+                                                                            validFilter, 
+                                                                            totalRecords, 
+                                                                            uriService, 
+                                                                            route);
 
             return pagedReponse;
         }
@@ -96,6 +103,5 @@ namespace Repository.EFCore
             await context.SaveChangesAsync();
             return entity;
         }
-
     }
 }
