@@ -17,10 +17,10 @@ namespace DataAccess
             map.HasKey(t => t.Id);
 
             // Table & Column Mappings
-            map.Property(t => t.Id).HasColumnName("ID");
+            map.Property(t => t.Id).HasColumnName("ID").ValueGeneratedOnAdd();
             map.Property(t => t.Description).HasColumnName("DESCRIPTION");
             map.Property(t => t.Active).HasColumnName("ACTIVE");
-
+             
             map.HasMany(x => x.Products)
                 .WithOne(x => x.Category)
                 .HasForeignKey(x => x.CategoryId);

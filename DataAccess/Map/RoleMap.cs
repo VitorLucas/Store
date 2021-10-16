@@ -17,7 +17,7 @@ namespace DataAccess
             map.HasKey(t => t.Id);
 
             // Table & Column Mappings
-            map.Property(t => t.Id).HasColumnName("ID");
+            map.Property(t => t.Id).HasColumnName("ID").ValueGeneratedOnAdd();
             map.Property(t => t.Description).HasColumnName("DESCRIPTION");
 
             map.HasMany(x => x.Users)
