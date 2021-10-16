@@ -1,11 +1,13 @@
 ﻿using Model.Interface;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Model
 {
     public class User : IEntity
     {
+        [Key, Column(Order = 0)]
         public int Id { get; set; }
 
         [Required]
