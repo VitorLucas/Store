@@ -35,7 +35,8 @@ namespace Store
                 var uri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
                 return new UriService(uri);
             });
-            services.AddDbContext<MainContext>(options => options.UseSqlServer(Configuration["AppSettings:ConnectionString"], b => b.MigrationsAssembly("Store")));
+            services.AddDbContext<MainContext>(options => options.UseSqlServer(Configuration["AppSettings:ConnectionString"],
+                                                                               b => b.MigrationsAssembly("Store")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -71,7 +72,7 @@ namespace Store
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, MainContext dataContext)
         {
             dataContext.Database.Migrate();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
